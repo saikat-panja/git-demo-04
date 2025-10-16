@@ -2,6 +2,30 @@
 class PlaceholderReplacer {
     constructor() {
         // Initialize DOM elements
+        this.setupThemeToggle();
+        this.initializeElements();
+    }
+
+    setupThemeToggle() {
+        // Initialize theme on page load
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+
+        // Set up theme toggle button
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        }
+    }
+
+    initializeElements() {
+        
+        // Initialize DOM elements
         this.inputTextarea = document.getElementById('input-text');
         this.previewContent = document.getElementById('preview-content');
         this.formContainer = document.getElementById('form-container');
@@ -352,14 +376,28 @@ The <team_name> Team`,
     resetForm() {
         console.log('Resetting form');
         
-        // Hide output and show appropriate state based on current input
+        // Keep the current input text but clear form fields
+        const currentText = this.inputTextarea.value;
+        
+        // Clear form fields
+        this.formFields.innerHTML = '';
+        
+        // Reset current values while keeping placeholders
+        this.currentValues = {};
+        
+        // Re-parse placeholders and regenerate form
+        this.placeholders = this.parsePlaceholders(currentText);
+        if (this.placeholders.length > 0) {
+            this.generateForm();
+            this.showFormContainer();
+        }
+        
+        // Clear output
+        this.outputContent.textContent = '';
         this.outputContainer.classList.add('hidden');
         
-        if (this.placeholders.length > 0) {
-            this.showFormContainer();
-        } else {
-            this.showInitialEmptyState();
-        }
+        // Update preview
+        this.updatePreview(currentText);
     }
     
     // UI State Management

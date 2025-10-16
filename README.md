@@ -42,5 +42,8 @@ The application will be available at `http://localhost:8080`
 
 - `index.html` - Main HTML structure
 - `style.css` - Styling and design system
+- `style.css.new` - New version of styling file (backup/alternative version)
 - `app.js` - JavaScript logic for placeholder processing
-- `Dockerfile` - Container configuration
+- `app.js.new` - New version of JavaScript file (backup/alternative version)
+- `Dockerfile` - Container configuration for Docker deployment
+- `README.md` - Project documentation and setup instructions
