@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Placeholder Replacer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1>Dynamic Placeholder Replacer</h1>
+            <p class="header-subtitle">Transform your text with dynamic placeholders. Fast, easy, and professional.</p>
+        </header>
+        
+        <div class="main-layout">
+            <!-- Left Panel -->
+            <div class="left-panel">
+                <div class="template-section">
+                    <div class="template-header">
+                        <h3>Quick Templates</h3>
+                        <div class="template-buttons">
+                            <button class="btn btn--secondary btn--sm" id="emailTemplate">Email</button>
+                            <button class="btn btn--secondary btn--sm" id="webTemplate">Web</button>
+                            <button class="btn btn--secondary btn--sm" id="codeTemplate">Code</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-section">
+                    <label for="input-text" class="form-label">Input Text with Placeholders</label>
+                    <textarea 
+                        id="input-text" 
+                        class="form-control input-textarea" 
+                        placeholder="Enter your text with placeholders like: Hello <name>, welcome to <website>!"
+                        rows="8"
+                    ></textarea>
+                </div>
+                
+                <div class="preview-section">
+                    <h3>Preview</h3>
+                    <div id="preview-content" class="preview-container">
+                        <p class="preview-placeholder-text">Enter text above to see preview with highlighted placeholders...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Panel -->
+            <div class="right-panel">
+                <div id="form-container" class="form-container hidden">
+                    <h3>Fill Placeholder Values</h3>
+                    <form id="placeholder-form">
+                        <div id="form-fields"></div>
+                        <button type="submit" class="btn btn--primary btn--full-width">Generate Output</button>
+                    </form>
+                </div>
+                
+                <div id="output-container" class="output-container hidden">
+                    <div class="output-header">
+                        <h3>Generated Output</h3>
+                        <button id="copy-btn" class="btn btn--secondary btn--sm">Copy to Clipboard</button>
+                    </div>
+                    <div id="output-content" class="output-content"></div>
+                    <button id="reset-btn" class="btn btn--outline btn--full-width">Reset Form</button>
+                </div>
+                
+                <!-- Initial Empty State - when no input -->
+                <div id="initial-empty-state" class="empty-state">
+                    <div class="empty-state-content">
+                        <h3>Enter Text to Get Started</h3>
+                        <p>Type or paste your text with &lt;placeholder&gt; patterns in the left panel to automatically generate a form here.</p>
+                        <div class="example-box">
+                            <strong>Example:</strong><br>
+                            Hello &lt;name&gt;, welcome to &lt;website&gt;!<br>
+                            Your email is &lt;email&gt;.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- No Placeholders Found State - when input exists but no placeholders -->
+                <div id="no-placeholders-state" class="empty-state hidden">
+                    <div class="empty-state-content">
+                        <h3>No Placeholders Found</h3>
+                        <p>Your text doesn't contain any &lt;placeholder&gt; patterns. Add placeholders to generate a dynamic form.</p>
+                        <div class="example-box">
+                            <strong>Placeholder format:</strong><br>
+                            Use &lt;placeholder_name&gt; in your text<br>
+                            Example: Hello &lt;name&gt;, welcome!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
