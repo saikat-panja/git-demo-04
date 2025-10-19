@@ -1,7 +1,6 @@
 # Dynamic Placeholder Replacer
 
-A client-side web application that dynamically generates forms from text containing placeholders in `<placeholder>` format and replaces them with user input. All processing happens in the browser with no server communication.
-
+A client-side web application that dynamically generates forms from text containing placeholders in `<placeholder>` format and replaces them with user input. All processing happens in the browser with no server communication. 
 ## Features
 
 - Real-time placeholder detection and highlighting
@@ -9,6 +8,7 @@ A client-side web application that dynamically generates forms from text contain
 - Instant preview with syntax highlighting
 - One-click copy to clipboard
 - Fully client-side processing (no data sent to server)
+- Light/dark theme 
 
 ## Docker Setup
 
